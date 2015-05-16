@@ -34,17 +34,13 @@ else:
    from ctypes import cdll, CFUNCTYPE
    lib = cdll.LoadLibrary('libtelldus-core.so.2') #import our library
 
-
-#device id to check for
-doorId = 5;
-
 #function to be called when a device event occurs      
 def callbackfunction(deviceId, method, value, callbackId, context):
    print "device callback"
    #This var keeps track of last changed value of door, thereby avoiding duplicate pushover calls
    #Method refers to 1=open 2=closed 
    global lastMethod
-   if (deviceId == doorId): 
+   if (deviceId == 5): 
      if(lastMethod != method):
         print "door sensor"
         print method
