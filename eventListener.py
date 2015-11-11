@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from ctypes import c_int, c_ubyte, c_void_p, POINTER, string_at #imports allowing the use of our library
 from threading import Timer
 import time
@@ -8,8 +10,8 @@ import os
 
 #import pushover notifications stuffs
 import httplib, urllib
-pushover_user_key = #userkey goes here
-pushover_app_token = #app token goes here
+pushover_user_key = ""
+pushover_app_token = ""
 lastMethod = None
 
 def sendPushover(title, msg):
@@ -34,6 +36,7 @@ else:
    from ctypes import cdll, CFUNCTYPE
    lib = cdll.LoadLibrary('libtelldus-core.so.2') #import our library
 
+   
 #function to be called when a device event occurs      
 def callbackfunction(deviceId, method, value, callbackId, context):
    print "device callback"
@@ -72,4 +75,4 @@ lib.tdRegisterRawDeviceEvent(cmp_funcraw, 0) #uncomment this, and comment out td
 
 print "Waiting for events..."
 while(1):
-   time.sleep(0.5) #don't exit
+   time.sleep(0.05) #don't exit
